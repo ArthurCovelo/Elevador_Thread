@@ -17,7 +17,7 @@ public class Tela extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 800, 630);
 		setResizable(false);
-		
+
 		ArrayList<JLabel> ListadePassageiros = new ArrayList<JLabel>();
 		boneco = new JLabel();
 		boneco.setBounds(500, 90, 100, 100);
@@ -58,28 +58,26 @@ public class Tela extends JFrame {
 		ListadePassageiros.add(boneco4);
 
 		add(boneco4);
-		
-	
 
 		Elevador = new JLabel();
 		Elevador.setBounds(250, 460, 100, 100);
 		Elevador.setVisible(true);
 		Elevador.setIcon(new ImageIcon("Image/Elevador.png"));
-		
+
 		Predio = new JLabel();
 		Predio.setBounds(-270, 50, 800, 630);
 		Predio.setVisible(true);
 		Predio.setIcon(new ImageIcon("Image/Fundo.png"));
-		
+
 		Portas = new JLabel();
 		Portas.setBounds(350, 460, 100, 100);
 		Portas.setVisible(true);
 		Portas.setIcon(new ImageIcon("Image/Porta.png"));
-		
+
 		add(Portas);
 		add(Predio);
-		add(Elevador);	
-		
+		add(Elevador);
+
 		repaint(100);
 
 	}
