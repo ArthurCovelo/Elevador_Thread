@@ -1,6 +1,5 @@
 package Elevador;
 
-import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -8,78 +7,64 @@ import javax.swing.JLabel;
 public class Tela extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	public static Tela instance;
+	public JLabel[] bonecos;
+	public JLabel Elevador, Portas, predio, fundo, elevador;
 
-	public JLabel boneco, boneco1, boneco2, boneco3, boneco4, Elevador, Portas, Predio;;
-
-	public Tela() {
-
+	public Tela(int n) {
+		instance = this;
+		setLayout(null); // Configura o null Layout
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 800, 630);
+		setBounds(0, 0, 1000, 750);
 		setResizable(false);
+		bonecos = new JLabel[n];
+		for (int i = 0; i < bonecos.length; i++) {
+			bonecos[i] = new JLabel();
+			bonecos[i].setBounds(500, 630 - i * (int) Predio.altura - 100, 100, 100);
+			bonecos[i].setIcon(new ImageIcon("Image/Boneco.png"));
+			bonecos[i].setVisible(false);
 
-		ArrayList<JLabel> ListadePassageiros = new ArrayList<JLabel>();
-		boneco = new JLabel();
-		boneco.setBounds(500, 90, 100, 100);
-		boneco.setIcon(new ImageIcon("Image/Boneco.png"));
-		boneco.setVisible(false);
-		ListadePassageiros.add(boneco);
+			add(bonecos[i]);
+		}
+		Elevador();
+		this.portas();
+		this.Predio();
+		background();
+		
+		repaint(100);
+	}
 
-		add(boneco);
+	public void background() {
+		fundo = new JLabel();
+		fundo.setBounds(0, 0, 1000, 750);
+		fundo.setVisible(true);
+		fundo.setIcon(new ImageIcon("Image/Background.jpg"));
 
-		boneco1 = new JLabel();
-		boneco1.setBounds(500, 90, 100, 100);
-		boneco1.setIcon(new ImageIcon("Image/Boneco.png"));
-		boneco1.setVisible(false);
-		ListadePassageiros.add(boneco1);
+		add(fundo);
+	}
+	public void Elevador() {
+		elevador = new JLabel();
+		elevador.setBounds(250, 460, 100, 100);
+		elevador.setVisible(true);
+		elevador.setIcon(new ImageIcon("Image/Elevador.png"));
 
-		add(boneco1);
-
-		boneco2 = new JLabel();
-		boneco2.setBounds(500, 90, 100, 100);
-		boneco2.setIcon(new ImageIcon("Image/Boneco.png"));
-		boneco2.setVisible(false);
-		ListadePassageiros.add(boneco2);
-
-		add(boneco2);
-
-		boneco3 = new JLabel();
-		boneco3.setBounds(500, 90, 100, 100);
-		boneco3.setIcon(new ImageIcon("Image/Boneco.png"));
-		boneco3.setVisible(false);
-		ListadePassageiros.add(boneco3);
-
-		add(boneco3);
-
-		boneco4 = new JLabel();
-		boneco4.setBounds(500, 90, 100, 100);
-		boneco4.setIcon(new ImageIcon("Image/Boneco.png"));
-		boneco4.setVisible(false);
-		ListadePassageiros.add(boneco4);
-
-		add(boneco4);
-
-		Elevador = new JLabel();
-		Elevador.setBounds(250, 460, 100, 100);
-		Elevador.setVisible(true);
-		Elevador.setIcon(new ImageIcon("Image/Elevador.png"));
-
-		Predio = new JLabel();
-		Predio.setBounds(-270, 50, 800, 630);
-		Predio.setVisible(true);
-		Predio.setIcon(new ImageIcon("Image/Fundo.png"));
-
+		add(elevador);
+	}
+	public void portas() {
 		Portas = new JLabel();
 		Portas.setBounds(350, 460, 100, 100);
 		Portas.setVisible(true);
 		Portas.setIcon(new ImageIcon("Image/Porta.png"));
 
 		add(Portas);
-		add(Predio);
-		add(Elevador);
-
-		repaint(100);
-
 	}
 
+	public void Predio() {
+		predio = new JLabel();
+		predio.setBounds(100, 80, 800, 630);
+		predio.setVisible(true);
+		predio.setIcon(new ImageIcon("Image/Fundo.png"));
+		add(predio);
+	}
 }

@@ -2,15 +2,14 @@ package Elevador;
 
 public class Predio {
 
-	int In = 0;
-
+	
 	Elevador elevador;
+	public static float altura = 115;
 
-	public Predio() {
-	}
-
-	public void run(int F) {
-		elevador = new Elevador(F, In);
+	public Predio(int f) {
+		elevador = new Elevador(f);
+		Elevador.destino = 0;
+		elevador.start();
 	}
 
 	public Elevador getElevador() {
